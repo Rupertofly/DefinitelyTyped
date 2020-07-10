@@ -67,19 +67,18 @@ resultDate = faker.date.recent();
 resultDate = faker.date.recent(100);
 resultStr = faker.date.month();
 resultStr = faker.date.month({
-	abbr: true,
-	context: true
+    abbr: true,
+    context: true
 });
 resultStr = faker.date.weekday();
 resultStr = faker.date.weekday({
-	abbr: true,
-	context: true
+    abbr: true,
+    context: true
 });
 
 resultStr = faker.finance.account();
 resultStr = faker.finance.account(0);
 resultStr = faker.finance.accountName();
-resultStr = faker.finance.routingNumber();
 resultStr = faker.finance.mask();
 resultStr = faker.finance.mask(0, false, false);
 resultStr = faker.finance.amount();
@@ -92,13 +91,6 @@ resultStr = faker.finance.bitcoinAddress();
 resultStr = faker.finance.iban();
 resultStr = faker.finance.iban(true);
 resultStr = faker.finance.bic();
-
-resultStr = faker.git.branch();
-resultStr = faker.git.commitEntry();
-resultStr = faker.git.commitEntry({ merge: true });
-resultStr = faker.git.commitMessage();
-resultStr = faker.git.commitSha();
-resultStr = faker.git.shortSha();
 
 resultStr = faker.hacker.abbreviation();
 resultStr = faker.hacker.adjective();
@@ -186,9 +178,9 @@ resultStr = faker.phone.phoneFormats();
 resultNum = faker.random.number();
 resultNum = faker.random.number(0);
 resultNum = faker.random.number({
-	min: 0,
-	max: 0,
-	precision: 0
+    min: 0,
+    max: 0,
+    precision: 0
 });
 resultStr = faker.random.arrayElement();
 resultStr = faker.random.arrayElement(['foo', 'bar', 'quux']);
@@ -216,14 +208,6 @@ resultStr = faker.system.fileExt("foo");
 resultStr = faker.system.directoryPath();
 resultStr = faker.system.filePath();
 resultStr = faker.system.semver();
-
-resultStr = faker.vehicle.vehicle();
-resultStr = faker.vehicle.manufacturer();
-resultStr = faker.vehicle.model();
-resultStr = faker.vehicle.type();
-resultStr = faker.vehicle.fuel();
-resultStr = faker.vehicle.vin();
-resultStr = faker.vehicle.color();
 
 import fakerAz = require('faker/locale/az');
 resultStr = fakerAz.name.firstName();

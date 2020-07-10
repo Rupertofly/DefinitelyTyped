@@ -771,6 +771,21 @@ tr = d3Selection.select('body')
     .data<number[]>([{test: 1}, {test: 2}]) // fails, using this data statement instead, would fail because of its type parameter not being met by input
     .enter().append('tr');
 
+let li: d3Selection.Selection<HTMLLIElement, number, HTMLElement, any>;
+li = d3Selection.select('li')
+    .data(matrix[0], d => <number> d)
+    .enter().append('li');
+
+const tr1 = d3Selection.select("body")
+    .append("table")
+    .selectAll("tr")
+    .data(matrix)
+    .join("tr")
+    .selectAll("td")
+    .data(d => d, e => <number> e)
+    .join("td")
+    .text(d => d);
+
 nMatrix = tr.data(); // i.e. matrix
 
 let td: d3Selection.Selection<HTMLTableDataCellElement, number, HTMLTableRowElement, number[]>;
@@ -836,16 +851,19 @@ newDiv = body.append(function(d, i, g) {
     const index: number = i;
     const group: HTMLBodyElement[] | d3Selection.ArrayLike<HTMLBodyElement> = g;
     console.log('Body element foo property: ', d.foo); // data of type BodyDatum
+    // tslint:disable-next-line:no-unnecessary-type-assertion
     return this.ownerDocument!.createElement('div'); // this-type HTMLBodyElement
 });
 
 // $ExpectError
 newDiv = body.append<HTMLDivElement>(function(d) {
+    // tslint:disable-next-line:no-unnecessary-type-assertion
     return this.ownerDocument!.createElement('a'); // fails, HTMLDivElement expected by type parameter, HTMLAnchorElement returned
 });
 
 // $ExpectError
 newDiv = body.append(function(d) {
+    // tslint:disable-next-line:no-unnecessary-type-assertion
     return this.ownerDocument!.createElement('a'); // fails, HTMLDivElement expected by inference, HTMLAnchorElement returned
 });
 
@@ -870,6 +888,7 @@ const typeValueFunction = function(
   i: number,
   g: HTMLBodyElement[] | d3Selection.ArrayLike<HTMLBodyElement>
 ) {
+    // tslint:disable-next-line:no-unnecessary-type-assertion
     return this.ownerDocument!.createElement('p'); // this-type HTMLParagraphElement
 };
 

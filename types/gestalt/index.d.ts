@@ -1,8 +1,11 @@
-// Type definitions for gestalt 0.75
+// Type definitions for gestalt 1.15
 // Project: https://github.com/pinterest/gestalt, https://pinterest.github.io/gestalt
 // Definitions by: Nicolás Serrano Arévalo <https://github.com/serranoarevalo>
 //                 Josh Gachnang <https://github.com/joshgachnang>
 //                 Calvin Chhour <https://github.com/calvinchhour>
+//                 Muhammed Hafiz <https://github.com/zifahm>
+//                 Kyle Hensel <https://github.com/k-yle>
+//                 Francisco Jimenez <https://github.com/jimenezff>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.8
 
@@ -163,6 +166,7 @@ export interface ButtonProps {
     size?: 'sm' | 'md' | 'lg';
     textColor?: 'blue' | 'red' | 'darkGray' | 'white';
     type?: 'submit' | 'button';
+    iconEnd?: Icons;
 }
 
 /*
@@ -237,13 +241,14 @@ https://pinterest.github.io/gestalt/#/Flyout
 */
 
 export interface FlyoutProps {
-    anchor: React.RefObject<any>;
+    anchor: any; // ideally a HTMLAnchorElement
     onDismiss: () => void;
     children?: React.ReactNode;
     color?: 'blue' | 'orange' | 'red' | 'white' | 'darkGray';
     idealDirection?: 'up' | 'right' | 'down' | 'left';
     positionRelativeToAnchor?: boolean;
     shouldFocus?: boolean;
+    showCaret?: boolean;
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number;
 }
 
@@ -287,7 +292,6 @@ export interface HeaderProps {
     id?: string;
     overflow?: 'normal' | 'breakWord';
     size?: 'sm' | 'md' | 'lg';
-
     truncate?: boolean;
 }
 
@@ -520,7 +524,7 @@ export interface ImageProps {
     loading?: 'eager' | 'lazy' | 'auto';
     onError?: () => void;
     onLoad?: () => void;
-    size?: string;
+    sizes?: string;
     srcSet?: string;
 }
 
@@ -673,6 +677,7 @@ export interface SearchFieldProps {
     onBlur?: (args: { event: React.SyntheticEvent<HTMLInputElement> }) => void;
     onFocus?: (args: { value: string; syntheticEvent: React.SyntheticEvent<HTMLInputElement> }) => void;
     placeholder?: string;
+    size?: 'md' | 'lg';
     value?: string;
 }
 
@@ -700,8 +705,11 @@ export interface SelectListProps {
     options: ReadonlyArray<{ label: string; value: string }>;
     disabled?: boolean;
     errorMessage?: string;
+    helperText?: string;
+    label?: string;
     name?: string;
     placeholder?: string;
+    size?: 'md' | 'lg';
     value?: string;
 }
 
@@ -725,7 +733,7 @@ https://pinterest.github.io/gestalt/#/Sticky
 export interface StickyProps {
     bottom?: number | string;
     children?: React.ReactNode;
-    dangerouslySetZIndex?: { __zIndex: string };
+    dangerouslySetZIndex?: { __zIndex: number };
     left?: number | string;
     right?: number | string;
     top?: number | string;
@@ -753,6 +761,7 @@ export interface TabsProps {
     activeTabIndex: number;
     onChange: (args: { event: React.SyntheticEvent<React.MouseEvent>; activeTabIndex: number }) => void;
     tabs: ReadonlyArray<{ text: any; href: string }>;
+    size?: 'md' | 'lg';
     wrap?: boolean;
 }
 
@@ -801,7 +810,8 @@ export interface TextAreaProps {
     onChange: (args: { event: React.SyntheticEvent<HTMLTextAreaElement>; value: string }) => void;
     disabled?: boolean;
     errorMessage?: string;
-    idealErrorDirection?: 'up' | 'right' | 'down' | 'left';
+    helperText?: string;
+    label?: string;
     name?: string;
     onBlur?: (args: { event: React.SyntheticEvent<HTMLTextAreaElement>; value: string }) => void;
     onFocus?: (args: { event: React.SyntheticEvent<HTMLTextAreaElement>; value: string }) => void;
@@ -822,12 +832,14 @@ export interface TextFieldProps {
     autoComplete?: 'current-password' | 'on' | 'off' | 'username' | 'new-password';
     disabled?: boolean;
     errorMessage?: string;
-    idealErrorDirection?: 'up' | 'right' | 'down' | 'left';
+    helperText?: string;
+    label?: string;
     name?: string;
     onBlur?: (args: { event: React.SyntheticEvent<React.FocusEvent<HTMLInputElement>>; value: string }) => void;
     onFocus?: (args: { event: React.SyntheticEvent<React.FocusEvent<HTMLInputElement>>; value: string }) => void;
     onKeyDown?: (args: { event: React.SyntheticEvent<React.KeyboardEvent<HTMLInputElement>>; value: string }) => void;
     placeholder?: string;
+    size?: 'md' | 'lg';
     type?: 'date' | 'email' | 'number' | 'password' | 'text' | 'url';
     value?: string;
 }
